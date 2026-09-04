@@ -34,9 +34,9 @@
 
 ## Phase 3: フロントエンド基盤
 
-- [ ] `frontend/lib/api.ts` にAPIクライアントをまとめる
-- [ ] `frontend/middleware.ts` でログインガードを実装（Cookie有無のみ判定）
-- [ ] 共通レイアウト・ナビゲーションを作成
+- [x] `frontend/lib/api.ts` にAPIクライアントをまとめる
+- [x] `frontend/middleware.ts` でログインガードを実装（Cookie有無のみ判定）（Next.js 16の仕様変更により`proxy.ts`として実装）
+- [x] 共通レイアウト・ナビゲーションを作成
 
 ## Phase 4: 画面実装
 
