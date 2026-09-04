@@ -35,7 +35,7 @@ model Customer {
 model Deal {
   id                String     @id @default(uuid())
   customerId        String
-  customer          Customer   @relation(fields: [customerId], references: [id])
+  customer          Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
   title             String
   amount            Int
   status            DealStatus @default(NEW)
@@ -46,9 +46,9 @@ model Deal {
 model Activity {
   id         String       @id @default(uuid())
   customerId String
-  customer   Customer     @relation(fields: [customerId], references: [id])
+  customer   Customer     @relation(fields: [customerId], references: [id], onDelete: Cascade)
   dealId     String?
-  deal       Deal?        @relation(fields: [dealId], references: [id])
+  deal       Deal?        @relation(fields: [dealId], references: [id], onDelete: SetNull)
   type       ActivityType
   content    String
   createdAt  DateTime     @default(now())

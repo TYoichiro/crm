@@ -48,7 +48,7 @@ model Customer {
 model Deal {
   id                String     @id @default(uuid())
   customerId        String
-  customer          Customer   @relation(fields: [customerId], references: [id])
+  customer          Customer   @relation(fields: [customerId], references: [id], onDelete: Cascade)
   title             String
   amount            Int
   status            DealStatus @default(NEW)
@@ -59,9 +59,9 @@ model Deal {
 model Activity {
   id         String       @id @default(uuid())
   customerId String
-  customer   Customer     @relation(fields: [customerId], references: [id])
+  customer   Customer     @relation(fields: [customerId], references: [id], onDelete: Cascade)
   dealId     String?
-  deal       Deal?        @relation(fields: [dealId], references: [id])
+  deal       Deal?        @relation(fields: [dealId], references: [id], onDelete: SetNull)
   type       ActivityType
   content    String
   createdAt  DateTime     @default(now())
@@ -77,3 +77,5 @@ model Activity {
 | Deal | amount | 円単位の整数（例: 1200000） |
 | Activity | dealId | 商談に紐づかない顧客への活動（雑談メモ等）もあるためnull許容 |
 | Activity | type | CALL / EMAIL / VISIT / NOTE の4種 |
+| Deal / Activity | customerへの参照 | 顧客削除時にカスケード削除される（`onDelete: Cascade`） |
+| Activity | dealへの参照 | 商談削除時は`dealId`が`null`になる（`onDelete: SetNull`）。活動履歴自体は顧客の記録として残る |
