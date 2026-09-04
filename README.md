@@ -31,4 +31,4 @@ docker compose up
 
 ## 進行状況
 
-Phase 0（プロジェクト初期化）まで完了。以降は [TASKS.md](./TASKS.md) を参照。
+Phase 3（フロントエンド基盤）まで完了。以降は [TASKS.md](./TASKS.md) を参照。

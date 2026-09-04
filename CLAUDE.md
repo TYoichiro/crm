@@ -36,39 +36,44 @@
 - Middlewareでは「Cookieが存在するかどうか」だけを確認し、なければ `/login` にリダイレクトする
 - 将来的に本格認証へ差し替える前提で、認証ロジックは以下の2ファイルに閉じ込める
   - `backend/src/middleware/auth.ts`
-  - `frontend/middleware.ts`
+  - `frontend/proxy.ts`（Next.js 16で`middleware`規約が`proxy`に名称変更されたため。役割はNext.jsのミドルウェアと同じ）
 
 ## ディレクトリ構成
 
 ```
-crm-app/
+crm-app/                       # このリポジトリのルート
 ├── frontend/                 # Next.js
 │   ├── app/
-│   │   ├── login/
-│   │   ├── dashboard/
-│   │   ├── customers/
-│   │   │   ├── page.tsx       # 一覧
-│   │   │   └── [id]/page.tsx  # 詳細（商談＋活動履歴）
-│   │   ├── deals/page.tsx     # パイプライン
-│   │   ├── layout.tsx
-│   │   └── middleware.ts      # ログインガード
+│   │   ├── login/             # ログイン画面（認証ガード対象外）
+│   │   └── (app)/              # ログイン必須画面をまとめるルートグループ（URLには影響しない）
+│   │       ├── dashboard/
+│   │       ├── customers/
+│   │       │   ├── page.tsx       # 一覧
+│   │       │   └── [id]/page.tsx  # 詳細（商談＋活動履歴）
+│   │       ├── deals/page.tsx     # パイプライン
+│   │       └── layout.tsx         # 共通ナビゲーション
 │   ├── components/
+│   │   ├── Nav.tsx
 │   │   ├── CustomerCard.tsx
 │   │   ├── DealCard.tsx
 │   │   └── ActivityTimeline.tsx
 │   ├── lib/api.ts             # backend呼び出しの集約
+│   ├── proxy.ts               # ログインガード（Next.js 16の`middleware`規約の後継）
 │   ├── Dockerfile
 │   └── package.json
 │
 ├── backend/                   # Express + Prisma
 │   ├── src/
 │   │   ├── routes/
+│   │   │   ├── auth.ts
 │   │   │   ├── customers.ts
 │   │   │   ├── deals.ts
-│   │   │   └── activities.ts
+│   │   │   ├── activities.ts
+│   │   │   └── dashboard.ts
 │   │   ├── middleware/auth.ts
-│   │   ├── index.ts
-│   │   └── prisma/schema.prisma
+│   │   ├── lib/prisma.ts
+│   │   └── index.ts
+│   ├── prisma/schema.prisma
 │   ├── Dockerfile
 │   └── package.json
 │
