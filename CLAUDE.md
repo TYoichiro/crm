@@ -50,14 +50,21 @@ crm-app/                       # このリポジトリのルート
 │   │       ├── customers/
 │   │       │   ├── page.tsx       # 一覧
 │   │       │   └── [id]/page.tsx  # 詳細（商談＋活動履歴）
-│   │       ├── deals/page.tsx     # パイプライン
+│   │       ├── deals/
+│   │       │   ├── page.tsx       # パイプライン
+│   │       │   └── [id]/page.tsx  # 商談詳細
 │   │       └── layout.tsx         # 共通ナビゲーション
 │   ├── components/
 │   │   ├── Nav.tsx
+│   │   ├── Modal.tsx
 │   │   ├── CustomerCard.tsx
+│   │   ├── CustomerFormModal.tsx
 │   │   ├── DealCard.tsx
-│   │   └── ActivityTimeline.tsx
+│   │   ├── DealFormModal.tsx
+│   │   ├── ActivityTimeline.tsx
+│   │   └── ActivityModal.tsx
 │   ├── lib/api.ts             # backend呼び出しの集約
+│   ├── lib/constants.ts       # ステータス等の日本語ラベル定義
 │   ├── proxy.ts               # ログインガード（Next.js 16の`middleware`規約の後継）
 │   ├── Dockerfile
 │   └── package.json
