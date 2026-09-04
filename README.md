@@ -20,15 +20,18 @@ CRM（練習用ミニマル構成）プロジェクト
 
 ```bash
 cp .env.example .env
-docker compose up
+docker compose up -d
+
+# 初回のみ: DBマイグレーションを適用
+docker compose exec backend npx prisma migrate deploy
 ```
 
 起動後、以下にアクセスできる。
 
-- フロントエンド: http://localhost:8010
+- フロントエンド: http://localhost:8010（`/login` からIDを入力してログイン）
 - バックエンド: http://localhost:8011 （動作確認: `GET /health`）
 - DB (Postgres): localhost:8000
 
 ## 進行状況
 
-Phase 4（画面実装）まで完了。以降は [TASKS.md](./TASKS.md) を参照。
+全フェーズ（Phase 0〜5）完了。詳細は [TASKS.md](./TASKS.md) を参照。

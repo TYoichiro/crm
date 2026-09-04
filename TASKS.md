@@ -50,6 +50,6 @@
 
 ## Phase 5: 仕上げ
 
-- [ ] 一通りの画面遷移を通しで確認（ログイン→ダッシュボード→顧客詳細→商談→活動追加）
-- [ ] README.mdに起動手順（`docker compose up`など）を記載
-- [ ] 不要なconsole.log・未使用importの削除
+- [x] 一通りの画面遷移を通しで確認（ログイン→ダッシュボード→顧客詳細→商談→活動追加）
+- [x] README.mdに起動手順（`docker compose up`など）を記載
+- [x] 不要なconsole.log・未使用importの削除
