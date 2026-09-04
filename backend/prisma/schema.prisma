@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum DealStatus {
+  NEW
+  IN_PROGRESS
+  WON
+  LOST
+}
+
+enum ActivityType {
+  CALL
+  EMAIL
+  VISIT
+  NOTE
+}
+
+model Customer {
+  id          String     @id @default(uuid())
+  companyName String
+  contactName String
+  email       String?
+  phone       String?
+  createdAt   DateTime   @default(now())
+  deals       Deal[]
+  activities  Activity[]
+}
+
+model Deal {
+  id                String     @id @default(uuid())
+  customerId        String
+  customer          Customer   @relation(fields: [customerId], references: [id])
+  title             String
+  amount            Int
+  status            DealStatus @default(NEW)
+  expectedCloseDate DateTime?
+  activities        Activity[]
+}
+
+model Activity {
+  id         String       @id @default(uuid())
+  customerId String
+  customer   Customer     @relation(fields: [customerId], references: [id])
+  dealId     String?
+  deal       Deal?        @relation(fields: [dealId], references: [id])
+  type       ActivityType
+  content    String
+  createdAt  DateTime     @default(now())
+}

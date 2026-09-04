@@ -15,9 +15,9 @@
 
 ## Phase 1: DBスキーマ
 
-- [ ] `backend/prisma/schema.prisma` に Customer / Deal / Activity を定義（`DATA_MODEL.md`のスキーマをそのまま使用）
-- [ ] `npx prisma migrate dev --name init` でマイグレーション実行
-- [ ] Prisma Studio等でテーブルが作成されていることを確認
+- [x] `backend/prisma/schema.prisma` に Customer / Deal / Activity を定義（`DATA_MODEL.md`のスキーマをそのまま使用）
+- [x] `npx prisma migrate dev --name init` でマイグレーション実行
+- [x] Prisma Studio等でテーブルが作成されていることを確認
 
 ## Phase 2: バックエンドAPI
 
