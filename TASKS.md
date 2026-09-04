@@ -21,16 +21,16 @@
 
 ## Phase 2: バックエンドAPI
 
-- [ ] 認証: `POST /api/auth/login`, `POST /api/auth/logout`
-- [ ] 認証middleware（Cookie有無チェックのみ、`backend/src/middleware/auth.ts`）
-- [ ] 顧客CRUD: `GET/POST /api/customers`, `GET/PUT/DELETE /api/customers/:id`
+- [x] 認証: `POST /api/auth/login`, `POST /api/auth/logout`
+- [x] 認証middleware（Cookie有無チェックのみ、`backend/src/middleware/auth.ts`）
+- [x] 顧客CRUD: `GET/POST /api/customers`, `GET/PUT/DELETE /api/customers/:id`
   - 詳細取得時は紐づく商談・活動履歴も含めて返す
-- [ ] 商談CRUD: `GET/POST /api/deals`, `GET/PUT/DELETE /api/deals/:id`
+- [x] 商談CRUD: `GET/POST /api/deals`, `GET/PUT/DELETE /api/deals/:id`
   - `GET /api/deals?status=` でパイプライン絞り込み
-- [ ] 活動履歴CRUD: `GET/POST /api/activities`, `PUT/DELETE /api/activities/:id`
+- [x] 活動履歴CRUD: `GET/POST /api/activities`, `PUT/DELETE /api/activities/:id`
   - `GET /api/activities?customerId=` `?dealId=` で絞り込み
-- [ ] ダッシュボード集計: `GET /api/dashboard/summary`
-- [ ] 各エンドポイントをcurl等で動作確認
+- [x] ダッシュボード集計: `GET /api/dashboard/summary`
+- [x] 各エンドポイントをcurl等で動作確認
 
 ## Phase 3: フロントエンド基盤
 
